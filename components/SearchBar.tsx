@@ -3,7 +3,11 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function SearchBar() {
+interface SearchBarProps {
+  className?: string;
+}
+
+export default function SearchBar({ className }: SearchBarProps) {
   const [query, setQuery] = useState("");
   const router = useRouter();
 
@@ -13,7 +17,7 @@ export default function SearchBar() {
   };
 
   return (
-    <form onSubmit={handleSearch} className="flex items-center space-x-2">
+    <form onSubmit={handleSearch} className={`flex items-center space-x-2 ${className}`}>
       <input
         type="text"
         value={query}
