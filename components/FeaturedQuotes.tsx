@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Image from 'next/image'
+import { useState } from "react";
+import Image from "next/image";
 
 const featuredQuotes = [
   {
@@ -9,47 +9,41 @@ const featuredQuotes = [
     text: "生命中最重要的不是位置，而是方向。",
     author: "奥利弗·温德尔·霍姆斯",
     book: "法律之道",
-    image: "/images/quote1.jpg",
-    summary: "这句话强调了人生目标和前进方向的重要性，鼓励我们不要过分在意当前的处境，而要关注未来的发展方向。"
   },
   {
     id: 2,
     text: "没有人可以回到过去重新开始，但谁都可以从现在开始，书写一个全然不同的结局。",
     author: "玛丽·罗宾逊",
     book: "心灵鸡汤",
-    image: "/images/quote2.jpg",
-    summary: "这句话传达了积极向上的人生态度，鼓励人们不要被过去所束缚，而要把握现在，创造美好的未来。"
   },
   // Add more featured quotes here
-]
+];
 
 export default function FeaturedQuotes() {
-  const [currentQuote, setCurrentQuote] = useState(0)
+  const [currentQuote, setCurrentQuote] = useState(0);
 
   const nextQuote = () => {
-    setCurrentQuote((prev) => (prev + 1) % featuredQuotes.length)
-  }
+    setCurrentQuote((prev) => (prev + 1) % featuredQuotes.length);
+  };
 
   const prevQuote = () => {
-    setCurrentQuote((prev) => (prev - 1 + featuredQuotes.length) % featuredQuotes.length)
-  }
+    setCurrentQuote(
+      (prev) => (prev - 1 + featuredQuotes.length) % featuredQuotes.length
+    );
+  };
 
-  const quote = featuredQuotes[currentQuote]
+  const quote = featuredQuotes[currentQuote];
 
   return (
     <div className="relative h-[500px] overflow-hidden rounded-lg shadow-2xl">
-      <Image
-        src={quote.image}
-        alt={quote.text}
-        layout="fill"
-        objectFit="cover"
-        className="absolute inset-0"
-      />
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent flex items-center justify-center">
         <div className="text-center text-white p-8 max-w-3xl">
-          <p className="text-4xl font-bold mb-6 leading-tight">&ldquo;{quote.text}&rdquo;</p>
-          <p className="text-2xl mb-4">—— {quote.author}《{quote.book}》</p>
-          <p className="text-lg mt-6 text-gray-300">{quote.summary}</p>
+          <p className="text-4xl font-bold mb-6 leading-tight">
+            &ldquo;{quote.text}&rdquo;
+          </p>
+          <p className="text-2xl mb-4">
+            —— {quote.author}《{quote.book}》
+          </p>
         </div>
       </div>
       <button
@@ -65,6 +59,5 @@ export default function FeaturedQuotes() {
         &#8250;
       </button>
     </div>
-  )
+  );
 }
-
